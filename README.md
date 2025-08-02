@@ -175,8 +175,8 @@ A comprehensive, modern web application for managing university student registra
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd student-registration-system
+   git clone https://github.com/HassanM-90/Student-Registration-System
+   cd Student-Registration-System
    ```
 
 2. **Install dependencies**

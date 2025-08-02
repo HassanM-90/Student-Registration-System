@@ -136,13 +136,13 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slide-down">
+      <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-slide-down">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold text-gray-900">Edit Student</h2>
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-dark-text">Edit Student</h2>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 text-gray-400 hover:text-gray-600 dark:text-dark-text-muted dark:hover:text-dark-text rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary transition-colors"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -153,7 +153,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
           {/* Profile Image */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
               Profile Image
             </label>
             <div className="flex items-center space-x-4">
@@ -162,7 +162,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
                   <img
                     src={previewImage}
                     alt="Profile preview"
-                    className="w-20 h-20 rounded-full object-cover border-2 border-gray-200"
+                    className="w-20 h-20 rounded-full object-cover border-2 border-gray-200 dark:border-dark-border-light"
                   />
                   <button
                     type="button"
@@ -173,7 +173,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
                   </button>
                 </div>
               ) : (
-                <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
+                <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-dark-bg-tertiary flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-dark-border-light">
                   <Upload className="h-8 w-8 text-gray-400" />
                 </div>
               )}
@@ -187,7 +187,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
                 />
                 <label
                   htmlFor="editProfileImage"
-                  className="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                  className="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg text-sm font-medium text-gray-700 dark:text-dark-text bg-white dark:bg-dark-bg-secondary hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors"
                 >
                   <Upload className="h-4 w-4 mr-2" />
                   Change Image
@@ -202,7 +202,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
           {/* Form Fields */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <label htmlFor="editName" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editName" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Full Name *
               </label>
               <input
@@ -217,7 +217,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
             </div>
 
             <div>
-              <label htmlFor="editRollNumber" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editRollNumber" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Roll Number *
               </label>
               <input
@@ -237,7 +237,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
             </div>
 
             <div>
-              <label htmlFor="editEmail" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editEmail" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Email Address *
               </label>
               <input
@@ -252,7 +252,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
             </div>
 
             <div>
-              <label htmlFor="editPhoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editPhoneNumber" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Phone Number *
               </label>
                               <input
@@ -268,7 +268,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
             </div>
 
             <div>
-              <label htmlFor="editDepartment" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editDepartment" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Department *
               </label>
               <select
@@ -287,7 +287,7 @@ const EditStudentModal: React.FC<EditStudentModalProps> = ({ student, isOpen, on
             </div>
 
             <div>
-              <label htmlFor="editAcademicYear" className="block text-sm font-medium text-gray-700 mb-2">
+              <label htmlFor="editAcademicYear" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                 Academic Year *
               </label>
               <select

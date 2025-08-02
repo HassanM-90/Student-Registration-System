@@ -94,19 +94,19 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-xl max-w-6xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border">
           <div className="flex items-center">
             <GraduationCap className="h-6 w-6 text-primary-600 mr-3" />
             <div>
-              <h2 className="text-xl font-semibold text-gray-900">Academic Profile</h2>
-              <p className="text-sm text-gray-600">{student.name} - {student.rollNumber}</p>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-dark-text">Academic Profile</h2>
+              <p className="text-sm text-gray-600 dark:text-dark-text-secondary">{student.name} - {student.rollNumber}</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 text-gray-400 hover:text-gray-600 dark:text-dark-text-muted dark:hover:text-dark-text rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary transition-colors"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -150,12 +150,12 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
           </div>
 
           {/* Enroll in New Subject */}
-          <div className="bg-gray-50 rounded-xl p-6 mb-8">
-            <h3 className="text-lg font-semibold text-gray-900 mb-4">Enroll in New Subject</h3>
+          <div className="bg-gray-50 dark:bg-dark-bg rounded-xl p-6 mb-8">
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text mb-4">Enroll in New Subject</h3>
             
             <div className="grid md:grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Select Subject
                 </label>
                 <select
@@ -175,7 +175,7 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
+                <label className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Select Semester
                 </label>
                 <select
@@ -216,13 +216,13 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
 
           {/* Enrollments by Semester */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">Subject Enrollments</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Subject Enrollments</h3>
             
             {enrollments.length === 0 ? (
-              <div className="text-center py-8 bg-gray-50 rounded-xl">
+              <div className="text-center py-8 bg-gray-50 dark:bg-dark-bg rounded-xl">
                 <BookOpen className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No enrollments yet</h3>
-                <p className="text-gray-600">Enroll in subjects to start tracking academic progress.</p>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">No enrollments yet</h3>
+                <p className="text-gray-600 dark:text-dark-text-secondary">Enroll in subjects to start tracking academic progress.</p>
               </div>
             ) : (
               getUniqueSemesters().map(semester => {
@@ -230,15 +230,15 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
                 const semesterCGPA = calculateSemesterCGPA(semester);
                 
                 return (
-                  <div key={semester} className="border border-gray-200 rounded-xl overflow-hidden">
-                    <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                  <div key={semester} className="border border-gray-200 dark:border-dark-border rounded-xl overflow-hidden">
+                    <div className="bg-gray-50 dark:bg-dark-bg px-6 py-4 border-b border-gray-200 dark:border-dark-border">
                       <div className="flex items-center justify-between">
-                        <h4 className="font-semibold text-gray-900">{semester}</h4>
+                        <h4 className="font-semibold text-gray-900 dark:text-dark-text">{semester}</h4>
                         <div className="flex items-center space-x-4">
-                          <span className="text-sm text-gray-600">
+                          <span className="text-sm text-gray-600 dark:text-dark-text-secondary">
                             {semesterEnrollments.length} subject(s)
                           </span>
-                          <span className="text-sm font-medium text-primary-600">
+                          <span className="text-sm font-medium text-primary-600 dark:text-primary-400">
                             CGPA: {formatCGPA(semesterCGPA)}
                           </span>
                         </div>
@@ -253,13 +253,13 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
                               <div className="flex-1">
                                 <div className="flex items-center space-x-3 mb-2">
                                   <BookOpen className="h-5 w-5 text-primary-600" />
-                                  <h5 className="font-semibold text-gray-900">{enrollment.subjectName}</h5>
-                                  <span className="px-2 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded">
+                                  <h5 className="font-semibold text-gray-900 dark:text-dark-text">{enrollment.subjectName}</h5>
+                                  <span className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs font-medium rounded">
                                     {enrollment.subjectCode}
                                   </span>
                                 </div>
                                 
-                                <div className="grid md:grid-cols-4 gap-4 text-sm text-gray-600">
+                                <div className="grid md:grid-cols-4 gap-4 text-sm text-gray-600 dark:text-dark-text-secondary">
                                   <div className="flex items-center">
                                     <Clock className="h-4 w-4 mr-2 text-gray-400" />
                                     <span>{enrollment.creditHours} Credit Hours</span>
@@ -283,14 +283,14 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
                               <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
                                 <button
                                   onClick={() => setEditingEnrollment(enrollment)}
-                                  className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                                  className="p-2 text-gray-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 rounded-lg transition-colors"
                                   aria-label={`Edit grade for ${enrollment.subjectName}`}
                                 >
                                   <Edit2 className="h-4 w-4" />
                                 </button>
                                 <button
                                   onClick={() => handleRemoveEnrollment(enrollment.id)}
-                                  className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                  className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                                   aria-label={`Remove ${enrollment.subjectName}`}
                                 >
                                   <Trash2 className="h-4 w-4" />
@@ -311,19 +311,19 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
         {/* Grade Edit Modal */}
         {editingEnrollment && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-60">
-            <div className="bg-white rounded-xl shadow-xl max-w-md w-full p-6">
+            <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-xl max-w-md w-full p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-gray-900">Update Grade</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Update Grade</h3>
                 <button
                   onClick={() => setEditingEnrollment(null)}
-                  className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="p-2 text-gray-400 hover:text-gray-600 dark:text-dark-text-muted dark:hover:text-dark-text rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary transition-colors"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
               
               <div className="mb-4">
-                <p className="text-sm text-gray-600 mb-2">
+                <p className="text-sm text-gray-600 dark:text-dark-text-secondary mb-2">
                   {editingEnrollment.subjectName} ({editingEnrollment.subjectCode})
                 </p>
               </div>
@@ -336,7 +336,7 @@ const StudentAcademicProfile: React.FC<StudentAcademicProfileProps> = ({ student
                     className={`p-3 rounded-lg text-sm font-medium transition-colors ${
                       editingEnrollment.grade === grade
                         ? getGradeColor(grade)
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                        : 'bg-gray-100 dark:bg-dark-bg-tertiary text-gray-700 dark:text-dark-text hover:bg-gray-200 dark:hover:bg-dark-bg'
                     }`}
                   >
                     {grade}

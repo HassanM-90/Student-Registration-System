@@ -24,6 +24,7 @@ import StudentCard from '../StudentCard/StudentCard';
 import EditStudentModal from '../EditStudentModal/EditStudentModal';
 import SubjectManagement from '../SubjectManagement/SubjectManagement';
 import StudentAcademicProfile from '../StudentAcademicProfile/StudentAcademicProfile';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
 const departments: Department[] = [
   'Computer Science',
@@ -181,19 +182,20 @@ const StudentDashboard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b border-gray-200">
+      <div className="bg-white shadow-sm border-b border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="mb-4 lg:mb-0">
-              <h1 className="text-2xl font-bold text-gray-900 flex items-center">
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-dark-text flex items-center">
                 <GraduationCap className="h-8 w-8 text-primary-600 mr-3" />
                 Student Dashboard
               </h1>
-              <p className="text-gray-600 mt-1">Manage and view all registered students</p>
+              <p className="text-gray-600 dark:text-dark-text-secondary mt-1">Manage and view all registered students</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
+              <DarkModeToggle className="self-center sm:self-auto" />
               <button
                 onClick={() => navigate('/')}
                 className="btn-secondary flex items-center justify-center"
@@ -222,69 +224,69 @@ const StudentDashboard: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <Users className="h-8 w-8 text-primary-600" />
               <div className="ml-4 flex-1">
-                <p className="text-sm font-medium text-gray-600">Total Students</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Total Students</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text">{stats.total}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <GraduationCap className="h-8 w-8 text-secondary-600" />
               <div className="ml-4 flex-1">
-                <p className="text-sm font-medium text-gray-600">Departments</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.departments}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Departments</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text">{stats.departments}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <BookOpen className="h-8 w-8 text-emerald-600" />
               <div className="ml-4 flex-1">
-                <p className="text-sm font-medium text-gray-600">Total Enrollments</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.totalEnrollments}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Total Enrollments</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text">{stats.totalEnrollments}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <Award className="h-8 w-8 text-orange-600" />
               <div className="ml-4 flex-1">
-                <p className="text-sm font-medium text-gray-600">Average CGPA</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.averageCGPA}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Average CGPA</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text">{stats.averageCGPA}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <TrendingUp className="h-8 w-8 text-emerald-600" />
               <div className="ml-4 flex-1 min-w-0">
-                <p className="text-sm font-medium text-gray-600">Top Department</p>
-                <p className="text-2xl font-bold text-gray-900 truncate">{stats.topDepartment}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Top Department</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text truncate">{stats.topDepartment}</p>
               </div>
             </div>
           </div>
           
-          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 dark:bg-dark-bg-secondary dark:border-dark-border">
             <div className="flex items-center">
               <Clock className="h-8 w-8 text-orange-600" />
               <div className="ml-4 flex-1">
-                <p className="text-sm font-medium text-gray-600">Recent (7 days)</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.recentRegistrations}</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-dark-text-secondary">Recent (7 days)</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-dark-text">{stats.recentRegistrations}</p>
               </div>
             </div>
           </div>
         </div>
 
         {/* Search and Filters */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+        <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border p-6 mb-8">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
@@ -294,7 +296,7 @@ const StudentDashboard: React.FC = () => {
                 placeholder="Search by name, roll number, or email..."
                 value={searchFilters.query}
                 onChange={handleSearch}
-                className="pl-10 pr-4 py-2 w-full border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="pl-10 pr-4 py-2 w-full border border-gray-300 dark:border-dark-border-light rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-dark-bg-secondary dark:text-dark-text dark:placeholder-dark-text-muted"
               />
             </div>
 
@@ -303,7 +305,7 @@ const StudentDashboard: React.FC = () => {
               <select
                 value={searchFilters.department}
                 onChange={(e) => handleFilterChange('department', e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="px-3 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-dark-bg-secondary dark:text-dark-text"
               >
                 <option value="">All Departments</option>
                 {departments.map(dept => (
@@ -314,7 +316,7 @@ const StudentDashboard: React.FC = () => {
               <select
                 value={searchFilters.academicYear}
                 onChange={(e) => handleFilterChange('academicYear', e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                className="px-3 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-dark-bg-secondary dark:text-dark-text"
               >
                 <option value="">All Years</option>
                 {academicYears.map(year => (
@@ -325,18 +327,18 @@ const StudentDashboard: React.FC = () => {
           </div>
 
           {/* Sort and Actions */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 pt-4 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 pt-4 border-t border-gray-100 dark:border-dark-border-light">
             <div className="flex items-center space-x-2 mb-4 sm:mb-0">
               <Filter className="h-5 w-5 text-gray-400" />
-              <span className="text-sm text-gray-600">Sort by:</span>
+              <span className="text-sm text-gray-600 dark:text-dark-text-secondary">Sort by:</span>
               {(['name', 'rollNumber', 'department', 'createdAt'] as SortOption[]).map((option) => (
                 <button
                   key={option}
                   onClick={() => handleSort(option)}
                   className={`px-3 py-1 rounded-md text-sm font-medium transition-colors ${
                     sortBy === option
-                      ? 'bg-primary-100 text-primary-700'
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                      ? 'bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-dark-text-secondary dark:hover:text-dark-text dark:hover:bg-dark-bg-tertiary'
                   }`}
                 >
                   {option === 'createdAt' ? 'Date' : option.charAt(0).toUpperCase() + option.slice(1)}
@@ -351,7 +353,7 @@ const StudentDashboard: React.FC = () => {
               <button
                 onClick={exportToCSV}
                 disabled={filteredStudents.length === 0}
-                className="inline-flex items-center px-3 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="inline-flex items-center px-3 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg text-sm font-medium text-gray-700 dark:text-dark-text bg-white dark:bg-dark-bg-secondary hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <Download className="h-4 w-4 mr-2" />
                 Export CSV
@@ -360,7 +362,7 @@ const StudentDashboard: React.FC = () => {
               {students.length > 0 && (
                 <button
                   onClick={() => setShowDeleteConfirm(true)}
-                  className="inline-flex items-center px-3 py-2 border border-red-300 rounded-lg text-sm font-medium text-red-700 bg-white hover:bg-red-50 transition-colors"
+                  className="inline-flex items-center px-3 py-2 border border-red-300 dark:border-red-600 rounded-lg text-sm font-medium text-red-700 dark:text-red-400 bg-white dark:bg-dark-bg-secondary hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                 >
                   <Trash2 className="h-4 w-4 mr-2" />
                   Clear All
@@ -372,10 +374,10 @@ const StudentDashboard: React.FC = () => {
 
         {/* Results Summary */}
         <div className="flex items-center justify-between mb-6">
-          <p className="text-gray-600">
+          <p className="text-gray-600 dark:text-dark-text-secondary">
             Showing {paginatedStudents.length} of {filteredStudents.length} students
             {searchFilters.query || searchFilters.department || searchFilters.academicYear ? (
-              <span className="ml-2 text-primary-600 font-medium">
+              <span className="ml-2 text-primary-600 dark:text-primary-400 font-medium">
                 (filtered from {students.length} total)
               </span>
             ) : null}
@@ -418,12 +420,12 @@ const StudentDashboard: React.FC = () => {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-xl border-2 border-dashed border-gray-300 p-12 text-center">
+          <div className="bg-white dark:bg-dark-bg-secondary rounded-xl border-2 border-dashed border-gray-300 dark:border-dark-border-light p-12 text-center">
             <Users className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">
+            <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">
               {students.length === 0 ? 'No students registered yet' : 'No students match your search'}
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-gray-600 dark:text-dark-text-secondary mb-6">
               {students.length === 0
                 ? 'Get started by registering your first student.'
                 : 'Try adjusting your search criteria or filters.'}
@@ -447,14 +449,14 @@ const StudentDashboard: React.FC = () => {
               <button
                 onClick={() => setCurrentPage(1)}
                 disabled={currentPage === 1}
-                className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-sm"
+                className="px-3 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors text-sm dark:text-dark-text dark:bg-dark-bg-secondary"
               >
                 First
               </button>
               <button
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="p-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+                className="p-2 border border-gray-300 dark:border-dark-border-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors dark:text-dark-text dark:bg-dark-bg-secondary"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
@@ -470,7 +472,7 @@ const StudentDashboard: React.FC = () => {
                     className={`px-3 py-2 border rounded-lg text-sm transition-colors ${
                       currentPage === pageNumber
                         ? 'bg-primary-600 text-white border-primary-600'
-                        : 'border-gray-300 text-gray-700 hover:bg-gray-50'
+                        : 'border-gray-300 dark:border-dark-border-light text-gray-700 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary dark:bg-dark-bg-secondary'
                     }`}
                   >
                     {pageNumber}
@@ -481,14 +483,14 @@ const StudentDashboard: React.FC = () => {
               <button
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
-                className="p-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors"
+                className="p-2 border border-gray-300 dark:border-dark-border-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors dark:text-dark-text dark:bg-dark-bg-secondary"
               >
                 <ChevronRight className="h-5 w-5" />
               </button>
               <button
                 onClick={() => setCurrentPage(totalPages)}
                 disabled={currentPage === totalPages}
-                className="px-3 py-2 border border-gray-300 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 transition-colors text-sm"
+                className="px-3 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors text-sm dark:text-dark-text dark:bg-dark-bg-secondary"
               >
                 Last
               </button>

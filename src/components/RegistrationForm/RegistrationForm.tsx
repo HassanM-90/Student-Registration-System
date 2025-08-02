@@ -6,6 +6,7 @@ import { ArrowLeft, Upload, X, Loader2, Check } from 'lucide-react';
 import { StudentFormData, Department, AcademicYear } from '../../types/Student';
 import { studentValidationSchema, formatPhoneNumber, formatRollNumber } from '../../utils/validation';
 import { useStudents } from '../../contexts/StudentContext';
+import DarkModeToggle from '../DarkModeToggle/DarkModeToggle';
 
 const departments: Department[] = [
   'Computer Science',
@@ -148,7 +149,11 @@ const RegistrationForm: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-dark-bg dark:to-dark-bg-secondary py-8 px-4 relative">
+      {/* Dark Mode Toggle */}
+      <div className="absolute top-6 right-6">
+        <DarkModeToggle />
+      </div>
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="mb-8">
@@ -160,17 +165,17 @@ const RegistrationForm: React.FC = () => {
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back to Home
           </button>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Student Registration</h1>
-          <p className="text-gray-600">Fill in the details below to register a new student</p>
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-2">Student Registration</h1>
+          <p className="text-gray-600 dark:text-dark-text-secondary">Fill in the details below to register a new student</p>
         </div>
 
         {/* Progress Bar */}
         <div className="mb-8">
-          <div className="flex items-center justify-between text-sm text-gray-500 mb-2">
+          <div className="flex items-center justify-between text-sm text-gray-500 dark:text-dark-text-muted mb-2">
             <span>Progress</span>
             <span>{Object.keys(watchedFields).filter(key => watchedFields[key as keyof StudentFormData] && watchedFields[key as keyof StudentFormData] !== '').length}/7 fields completed</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-2">
+          <div className="w-full bg-gray-200 dark:bg-dark-bg-tertiary rounded-full h-2">
             <div 
               className="bg-primary-600 h-2 rounded-full transition-all duration-300"
               style={{ width: `${(Object.keys(watchedFields).filter(key => watchedFields[key as keyof StudentFormData] && watchedFields[key as keyof StudentFormData] !== '').length / 7) * 100}%` }}
@@ -180,7 +185,7 @@ const RegistrationForm: React.FC = () => {
 
         {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+          <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-sm border border-gray-200 dark:border-dark-border p-6">
             {/* Profile Image Upload */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -204,7 +209,7 @@ const RegistrationForm: React.FC = () => {
                     </button>
                   </div>
                 ) : (
-                  <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center border-2 border-dashed border-gray-300">
+                  <div className="w-20 h-20 rounded-full bg-gray-100 dark:bg-dark-bg-tertiary flex items-center justify-center border-2 border-dashed border-gray-300 dark:border-dark-border-light">
                     <Upload className="h-8 w-8 text-gray-400" />
                   </div>
                 )}
@@ -218,12 +223,12 @@ const RegistrationForm: React.FC = () => {
                   />
                   <label
                     htmlFor="profileImage"
-                    className="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-colors"
+                    className="cursor-pointer inline-flex items-center px-4 py-2 border border-gray-300 dark:border-dark-border-light rounded-lg text-sm font-medium text-gray-700 dark:text-dark-text bg-white dark:bg-dark-bg-secondary hover:bg-gray-50 dark:hover:bg-dark-bg-tertiary transition-colors"
                   >
                     <Upload className="h-4 w-4 mr-2" />
                     Choose Image
                   </label>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-500 dark:text-dark-text-muted mt-1">
                     Max 5MB. JPEG, PNG, WebP only.
                   </p>
                 </div>
@@ -236,7 +241,7 @@ const RegistrationForm: React.FC = () => {
             {/* Personal Information */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Full Name *
                 </label>
                 <input
@@ -253,7 +258,7 @@ const RegistrationForm: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="rollNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="rollNumber" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Roll Number *
                 </label>
                 <input
@@ -271,13 +276,13 @@ const RegistrationForm: React.FC = () => {
                 {watchedFields.rollNumber && checkRollNumberExists(watchedFields.rollNumber) && (
                   <p className="text-red-600 text-sm mt-1">This roll number is already registered</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 dark:text-dark-text-muted mt-1">
                   Format: XX0000XX000 (e.g., CS2021BT001)
                 </p>
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Email Address *
                 </label>
                 <input
@@ -294,7 +299,7 @@ const RegistrationForm: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="phoneNumber" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Phone Number *
                 </label>
                 <input
@@ -308,13 +313,13 @@ const RegistrationForm: React.FC = () => {
                 {errors.phoneNumber && (
                   <p id="phone-error" className="text-red-600 text-sm mt-1">{errors.phoneNumber.message}</p>
                 )}
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-xs text-gray-500 dark:text-dark-text-muted mt-1">
                   Format: 03XX-XXXXXXX (e.g., 0300-1234567) or +92-XXX-XXXXXXX
                 </p>
               </div>
 
               <div>
-                <label htmlFor="department" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="department" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Department *
                 </label>
                 <select
@@ -334,7 +339,7 @@ const RegistrationForm: React.FC = () => {
               </div>
 
               <div>
-                <label htmlFor="academicYear" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="academicYear" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                   Academic Year *
                 </label>
                 <select

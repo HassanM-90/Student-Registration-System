@@ -111,16 +111,16 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white dark:bg-dark-bg-secondary rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-dark-border">
           <div className="flex items-center">
             <BookOpen className="h-6 w-6 text-primary-600 mr-3" />
-            <h2 className="text-xl font-semibold text-gray-900">Subject Management</h2>
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-dark-text">Subject Management</h2>
           </div>
           <button
             onClick={onClose}
-            className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+            className="p-2 text-gray-400 hover:text-gray-600 dark:text-dark-text-muted dark:hover:text-dark-text rounded-lg hover:bg-gray-100 dark:hover:bg-dark-bg-tertiary transition-colors"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />
@@ -143,15 +143,15 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
 
           {/* Subject Form */}
           {showForm && (
-            <div className="bg-gray-50 rounded-xl p-6 mb-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="bg-gray-50 dark:bg-dark-bg rounded-xl p-6 mb-6">
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text mb-4">
                 {editingSubject ? 'Edit Subject' : 'Add New Subject'}
               </h3>
               
               <form onSubmit={handleSubmit(editingSubject ? handleUpdateSubject : handleAddSubject)} className="space-y-4">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="subjectName" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="subjectName" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                       Subject Name *
                     </label>
                     <input
@@ -167,7 +167,7 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
                   </div>
 
                   <div>
-                    <label htmlFor="subjectCode" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="subjectCode" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                       Subject Code *
                     </label>
                     <input
@@ -183,7 +183,7 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
                   </div>
 
                   <div>
-                    <label htmlFor="creditHours" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="creditHours" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                       Credit Hours *
                     </label>
                     <input
@@ -201,7 +201,7 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
                   </div>
 
                   <div>
-                    <label htmlFor="instructorName" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label htmlFor="instructorName" className="block text-sm font-medium text-gray-700 dark:text-dark-text-secondary mb-2">
                       Instructor Name *
                     </label>
                     <input
@@ -250,13 +250,13 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
 
           {/* Subjects List */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-gray-900">Available Subjects ({subjects.length})</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text">Available Subjects ({subjects.length})</h3>
             
             {subjects.length === 0 ? (
-              <div className="text-center py-8 bg-gray-50 rounded-xl">
+              <div className="text-center py-8 bg-gray-50 dark:bg-dark-bg rounded-xl">
                 <BookOpen className="mx-auto h-12 w-12 text-gray-400 mb-4" />
-                <h3 className="text-lg font-medium text-gray-900 mb-2">No subjects available</h3>
-                <p className="text-gray-600">Add your first subject to get started.</p>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-dark-text mb-2">No subjects available</h3>
+                <p className="text-gray-600 dark:text-dark-text-secondary">Add your first subject to get started.</p>
               </div>
             ) : (
               <div className="grid gap-4">
@@ -266,13 +266,13 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
                       <div className="flex-1">
                         <div className="flex items-center space-x-3 mb-2">
                           <BookOpen className="h-5 w-5 text-primary-600" />
-                          <h4 className="font-semibold text-gray-900">{subject.name}</h4>
-                          <span className="px-2 py-1 bg-primary-100 text-primary-700 text-xs font-medium rounded">
+                          <h4 className="font-semibold text-gray-900 dark:text-dark-text">{subject.name}</h4>
+                          <span className="px-2 py-1 bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs font-medium rounded">
                             {subject.code}
                           </span>
                         </div>
                         
-                        <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-600">
+                        <div className="grid md:grid-cols-3 gap-4 text-sm text-gray-600 dark:text-dark-text-secondary">
                           <div className="flex items-center">
                             <Clock className="h-4 w-4 mr-2 text-gray-400" />
                             <span>{subject.creditHours} Credit Hours</span>
@@ -282,7 +282,7 @@ const SubjectManagement: React.FC<SubjectManagementProps> = ({ isOpen, onClose }
                             <span>{subject.instructorName}</span>
                           </div>
                           <div className="flex items-center">
-                            <span className="text-xs text-gray-500">
+                            <span className="text-xs text-gray-500 dark:text-dark-text-muted">
                               Created {new Date(subject.createdAt).toLocaleDateString()}
                             </span>
                           </div>

@@ -34,6 +34,16 @@ export default {
           900: '#312e81',
           950: '#1e1b4b',
         },
+        dark: {
+          bg: '#0f172a',
+          'bg-secondary': '#1e293b',
+          'bg-tertiary': '#334155',
+          text: '#f1f5f9',
+          'text-secondary': '#cbd5e1',
+          'text-muted': '#94a3b8',
+          border: '#334155',
+          'border-light': '#475569',
+        },
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

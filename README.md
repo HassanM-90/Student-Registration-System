@@ -1,6 +1,33 @@
 # Student Registration System
 
-A comprehensive, modern web application for managing university student registrations with full CRUD operations, built with React, TypeScript, and Tailwind CSS.
+A comprehensive, modern web application for managing university student registrations with full CRUD operations, built with React, TypeScript, and Tailwind CSS. Features a beautiful dark mode theme with smooth transitions and excellent accessibility.
+
+## 🌙 Dark Mode Feature
+
+### ✅ Complete Dark Mode Support
+- **System preference detection** - Automatically detects user's OS theme preference
+- **Persistent theme storage** - Remembers user's choice across sessions
+- **Smooth theme transitions** - Animated switching between light and dark modes
+- **Comprehensive dark styling** - All components optimized for dark theme
+- **Accessible design** - Proper contrast ratios and readability
+- **Dark mode toggle** - Beautiful animated toggle with sun/moon icons
+
+### ✅ Dark Mode Components
+- **Splash Screen** - Dark gradient background with proper text contrast
+- **Registration Form** - Dark form inputs and labels with validation styling
+- **Student Dashboard** - Dark statistics cards and search interface
+- **Student Cards** - Dark card backgrounds with readable text
+- **Subject Management** - Dark modal with proper form styling
+- **Academic Profile** - Dark academic dashboard with grade tracking
+- **Navigation** - Dark header with consistent styling
+
+### ✅ Dark Mode Colors
+- **Background**: `#0f172a` (dark slate)
+- **Secondary background**: `#1e293b` (lighter slate)
+- **Text**: `#f1f5f9` (light gray)
+- **Secondary text**: `#cbd5e1` (muted gray)
+- **Borders**: `#334155` (medium gray)
+- **Interactive elements**: Proper hover states and focus indicators
 
 ## 🎯 Features
 
@@ -9,6 +36,8 @@ A comprehensive, modern web application for managing university student registra
 - **Interactive elements** with hover effects and animations
 - **Navigation button** that routes to the registration form
 - **Responsive design** that works on all device sizes
+- **Dark mode toggle** in the top-right corner
+- **Dark gradient background** with proper text contrast
 
 ### ✅ University Registration Form
 - **Complete student information fields**:
@@ -24,6 +53,8 @@ A comprehensive, modern web application for managing university student registra
 - **Image upload functionality** with preview and file validation
 - **Progress indicator** showing form completion status
 - **Duplicate roll number detection**
+- **Dark mode styling** with proper form input contrast
+- **Dark mode toggle** for easy theme switching
 
 ### ✅ Subject & CGPA Management
 - **Complete Subject Management**:
@@ -73,6 +104,9 @@ A comprehensive, modern web application for managing university student registra
 - **Export functionality** (CSV download)
 - **Responsive grid layout** with student cards
 - **Academic profile integration** with CGPA display
+- **Dark mode dashboard** with dark statistics cards
+- **Dark mode toggle** in header for easy access
+- **Dark search interface** with proper contrast
 
 ## 🛠️ Technology Stack
 
@@ -82,6 +116,7 @@ A comprehensive, modern web application for managing university student registra
 - **Styling**: Tailwind CSS with custom animations
 - **Icons**: Lucide React
 - **State Management**: React Context API with localStorage persistence
+- **Dark Mode**: Custom dark mode context with system preference detection
 - **Build Tool**: Vite
 - **Package Manager**: npm
 
@@ -91,6 +126,8 @@ A comprehensive, modern web application for managing university student registra
 - [x] Animated welcome screen with modern design
 - [x] Button that routes to registration form
 - [x] Smooth animations and transitions
+- [x] Dark mode support with toggle
+- [x] Proper text contrast in dark mode
 
 ### ✅ University Registration Form
 - [x] Student name field with validation
@@ -99,6 +136,8 @@ A comprehensive, modern web application for managing university student registra
 - [x] Image upload functionality
 - [x] Effective form state management using React Hook Form
 - [x] Real-time validation and error handling
+- [x] Dark mode form styling
+- [x] Dark mode toggle for theme switching
 
 ### ✅ Subject & CGPA Management
 - [x] Complete subject CRUD operations
@@ -122,6 +161,9 @@ A comprehensive, modern web application for managing university student registra
 - [x] Pagination for large datasets
 - [x] Academic profile integration
 - [x] CGPA tracking and display
+- [x] Dark mode dashboard with statistics cards
+- [x] Dark mode search and filter interface
+- [x] Dark mode toggle in header
 
 ## 🚀 Getting Started
 
@@ -162,24 +204,26 @@ A comprehensive, modern web application for managing university student registra
 ```
 src/
 ├── components/
-│   ├── EditStudentModal/           # Edit student modal component
-│   ├── RegistrationForm/           # Student registration form
-│   ├── SplashScreen/              # Welcome screen
-│   ├── StudentCard/               # Individual student card
-│   ├── StudentDashboard/          # Main dashboard with listing
-│   ├── SubjectManagement/         # Subject CRUD management
-│   └── StudentAcademicProfile/    # Academic profile and CGPA tracking
+│   ├── DarkModeToggle/            # Dark mode toggle component
+│   ├── EditStudentModal/          # Edit student modal component
+│   ├── RegistrationForm/          # Student registration form
+│   ├── SplashScreen/             # Welcome screen
+│   ├── StudentCard/              # Individual student card
+│   ├── StudentDashboard/         # Main dashboard with listing
+│   ├── SubjectManagement/        # Subject CRUD management
+│   └── StudentAcademicProfile/   # Academic profile and CGPA tracking
 ├── contexts/
-│   └── StudentContext.tsx         # Global state management
+│   ├── DarkModeContext.tsx       # Dark mode state management
+│   └── StudentContext.tsx        # Global state management
 ├── hooks/
-│   └── useLocalStorage.ts         # Custom hook for localStorage
+│   └── useLocalStorage.ts        # Custom hook for localStorage
 ├── types/
-│   └── Student.ts                # TypeScript type definitions
+│   └── Student.ts               # TypeScript type definitions
 ├── utils/
-│   ├── validation.ts             # Form validation schemas
-│   └── cgpaCalculator.ts         # CGPA calculation utilities
-├── App.tsx                       # Main application component
-└── main.tsx                     # Application entry point
+│   ├── validation.ts            # Form validation schemas
+│   └── cgpaCalculator.ts        # CGPA calculation utilities
+├── App.tsx                      # Main application component
+└── main.tsx                    # Application entry point
 ```
 
 ## 🎨 Features in Detail
@@ -190,6 +234,9 @@ src/
 - **Statistics display** with animated counters
 - **Smooth transitions** and hover effects
 - **Accessibility features** with proper ARIA labels
+- **Dark mode support** with gradient background
+- **Dark mode toggle** for easy theme switching
+- **Proper text contrast** in both light and dark modes
 
 ### Registration Form
 - **Comprehensive validation**:
@@ -204,6 +251,9 @@ src/
 - **Image preview** with upload/remove functionality
 - **Duplicate detection** for roll numbers
 - **Success state** with automatic navigation
+- **Dark mode styling** with proper form input contrast
+- **Dark mode toggle** for theme switching
+- **Dark upload area** with proper visual feedback
 
 ### Student Dashboard
 - **Advanced filtering**:
@@ -219,6 +269,10 @@ src/
 - **Statistics cards** with real-time data
 - **Export functionality** for data backup
 - **Bulk operations** (clear all students)
+- **Dark mode dashboard** with dark statistics cards
+- **Dark mode search interface** with proper contrast
+- **Dark mode toggle** in header for easy access
+- **Dark pagination controls** with proper styling
 
 ### Student Cards
 - **Profile image display** with fallback icon
@@ -228,6 +282,9 @@ src/
 - **CGPA display** with color-coded grades
 - **Subject count** and credit hours summary
 - **Responsive design** for all screen sizes
+- **Dark mode styling** with proper text contrast
+- **Dark card backgrounds** with readable text
+- **Dark action buttons** with proper hover states
 
 ### Subject Management
 - **Complete CRUD operations** for subjects
@@ -235,6 +292,9 @@ src/
 - **Subject listing** with edit/delete functionality
 - **Credit hours tracking** and instructor assignment
 - **Subject code validation** with format requirements
+- **Dark mode modal** with proper form styling
+- **Dark mode subject cards** with readable text
+- **Dark mode form inputs** with proper contrast
 
 ### Academic Profile System
 - **Comprehensive academic dashboard** for each student
@@ -244,6 +304,9 @@ src/
 - **Semester-wise academic progress** tracking
 - **Color-coded grade display** for easy identification
 - **Credit hour tracking** and total credits calculation
+- **Dark mode academic dashboard** with proper styling
+- **Dark mode grade display** with color-coded indicators
+- **Dark mode enrollment interface** with readable text
 
 ## 🔧 Customization
 
@@ -294,8 +357,10 @@ Edit `src/utils/validation.ts` to customize:
 
 ### Styling Customization
 - **Colors**: Modify `tailwind.config.js` primary/secondary color schemes
+- **Dark Mode Colors**: Customize dark theme colors in `tailwind.config.js`
 - **Animations**: Add new keyframes in `tailwind.config.js`
 - **Components**: Update `src/index.css` for global styles
+- **Dark Mode Toggle**: Customize toggle appearance in `DarkModeToggle.tsx`
 
 ## 📱 Responsive Design
 
@@ -313,6 +378,8 @@ The application is fully responsive and works on:
 - **Academic data persistence**: Subject enrollments, grades, and CGPA calculations
 - **Semester management**: Persistent semester configuration
 - **Grade history**: Complete academic record preservation
+- **Theme persistence**: Dark mode preference saved across sessions
+- **System preference detection**: Automatically detects OS theme preference
 
 ## 🎯 Performance Features
 
@@ -323,6 +390,8 @@ The application is fully responsive and works on:
 - **Fast development** with hot module replacement
 - **Real-time CGPA calculations** with optimized algorithms
 - **Dynamic grade updates** with immediate UI feedback
+- **Smooth theme transitions** with optimized animations
+- **Efficient dark mode switching** with minimal re-renders
 
 ## 🧪 Testing
 
@@ -334,6 +403,9 @@ The application includes comprehensive validation and error handling:
 - **Grade validation** and CGPA calculation accuracy
 - **Subject enrollment** validation and conflict detection
 - **Semester management** validation
+- **Dark mode functionality** testing across all components
+- **Theme persistence** validation across browser sessions
+- **Accessibility testing** for proper contrast ratios
 
 ## 📄 License
 

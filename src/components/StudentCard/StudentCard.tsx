@@ -42,8 +42,8 @@ const StudentCard: React.FC<StudentCardProps> = ({ student, onEdit, onDelete, on
             </div>
           )}
           <div>
-            <h3 className="font-semibold text-gray-900 text-lg">{student.name}</h3>
-            <p className="text-sm text-gray-500">{student.rollNumber}</p>
+            <h3 className="font-semibold text-gray-900 dark:text-dark-text text-lg">{student.name}</h3>
+            <p className="text-sm text-gray-500 dark:text-dark-text-secondary">{student.rollNumber}</p>
           </div>
         </div>
         
@@ -73,37 +73,37 @@ const StudentCard: React.FC<StudentCardProps> = ({ student, onEdit, onDelete, on
       </div>
 
       <div className="space-y-3">
-        <div className="flex items-center text-sm text-gray-600">
+        <div className="flex items-center text-sm text-gray-600 dark:text-dark-text-secondary">
           <GraduationCap className="h-4 w-4 mr-2 text-gray-400" />
           <span className="font-medium">{student.department}</span>
           <span className="mx-2">•</span>
           <span>{student.academicYear}</span>
         </div>
         
-        <div className="flex items-center text-sm text-gray-600">
+        <div className="flex items-center text-sm text-gray-600 dark:text-dark-text-secondary">
           <Mail className="h-4 w-4 mr-2 text-gray-400" />
           <span className="truncate">{student.email}</span>
         </div>
         
-        <div className="flex items-center text-sm text-gray-600">
+        <div className="flex items-center text-sm text-gray-600 dark:text-dark-text-secondary">
           <Phone className="h-4 w-4 mr-2 text-gray-400" />
           <span>{student.phoneNumber}</span>
         </div>
         
-        {/* Academic Summary */}
-        <div className="pt-2 border-t border-gray-100">
+                {/* Academic Summary */}
+        <div className="pt-2 border-t border-gray-100 dark:border-dark-border-light">
           <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center text-gray-600">
+            <div className="flex items-center text-gray-600 dark:text-dark-text-secondary">
               <Award className="h-4 w-4 mr-2 text-gray-400" />
               <span>CGPA: {formatCGPA(cgpa)}</span>
             </div>
-            <div className="text-xs text-gray-500">
+            <div className="text-xs text-gray-500 dark:text-dark-text-muted">
               {enrollments.length} subject(s) • {totalCredits} credits
             </div>
           </div>
         </div>
-        
-        <div className="flex items-center text-sm text-gray-600">
+
+        <div className="flex items-center text-sm text-gray-600 dark:text-dark-text-secondary">
           <Calendar className="h-4 w-4 mr-2 text-gray-400" />
           <span>Registered {formatDate(student.createdAt)}</span>
         </div>

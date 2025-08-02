@@ -13,7 +13,9 @@ import {
   Trash2,
   AlertCircle,
   BookOpen,
-  Award
+  Award,
+  TrendingUp,
+  Clock
 } from 'lucide-react';
 import { Student, SearchFilters, SortOption, SortOrder, Department, AcademicYear } from '../../types/Student';
 import { useStudents } from '../../contexts/StudentContext';
@@ -223,7 +225,7 @@ const StudentDashboard: React.FC = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
               <Users className="h-8 w-8 text-primary-600" />
-              <div className="ml-4">
+              <div className="ml-4 flex-1">
                 <p className="text-sm font-medium text-gray-600">Total Students</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
               </div>
@@ -233,7 +235,7 @@ const StudentDashboard: React.FC = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
               <GraduationCap className="h-8 w-8 text-secondary-600" />
-              <div className="ml-4">
+              <div className="ml-4 flex-1">
                 <p className="text-sm font-medium text-gray-600">Departments</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.departments}</p>
               </div>
@@ -243,7 +245,7 @@ const StudentDashboard: React.FC = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
               <BookOpen className="h-8 w-8 text-emerald-600" />
-              <div className="ml-4">
+              <div className="ml-4 flex-1">
                 <p className="text-sm font-medium text-gray-600">Total Enrollments</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.totalEnrollments}</p>
               </div>
@@ -253,7 +255,7 @@ const StudentDashboard: React.FC = () => {
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
               <Award className="h-8 w-8 text-orange-600" />
-              <div className="ml-4">
+              <div className="ml-4 flex-1">
                 <p className="text-sm font-medium text-gray-600">Average CGPA</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.averageCGPA}</p>
               </div>
@@ -262,22 +264,18 @@ const StudentDashboard: React.FC = () => {
           
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
-              <div className="h-8 w-8 bg-emerald-100 rounded-lg flex items-center justify-center">
-                <span className="text-emerald-600 font-semibold text-sm">TOP</span>
-              </div>
-              <div className="ml-4">
+              <TrendingUp className="h-8 w-8 text-emerald-600" />
+              <div className="ml-4 flex-1 min-w-0">
                 <p className="text-sm font-medium text-gray-600">Top Department</p>
-                <p className="text-lg font-bold text-gray-900 truncate">{stats.topDepartment}</p>
+                <p className="text-2xl font-bold text-gray-900 truncate">{stats.topDepartment}</p>
               </div>
             </div>
           </div>
           
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
-              <div className="h-8 w-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <span className="text-orange-600 font-semibold text-sm">7D</span>
-              </div>
-              <div className="ml-4">
+              <Clock className="h-8 w-8 text-orange-600" />
+              <div className="ml-4 flex-1">
                 <p className="text-sm font-medium text-gray-600">Recent (7 days)</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.recentRegistrations}</p>
               </div>

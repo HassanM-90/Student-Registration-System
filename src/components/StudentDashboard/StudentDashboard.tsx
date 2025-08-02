@@ -11,12 +11,17 @@ import {
   ChevronRight,
   Download,
   Trash2,
-  AlertCircle
+  AlertCircle,
+  BookOpen,
+  Award
 } from 'lucide-react';
 import { Student, SearchFilters, SortOption, SortOrder, Department, AcademicYear } from '../../types/Student';
 import { useStudents } from '../../contexts/StudentContext';
+import { formatCGPA } from '../../utils/cgpaCalculator';
 import StudentCard from '../StudentCard/StudentCard';
 import EditStudentModal from '../EditStudentModal/EditStudentModal';
+import SubjectManagement from '../SubjectManagement/SubjectManagement';
+import StudentAcademicProfile from '../StudentAcademicProfile/StudentAcademicProfile';
 
 const departments: Department[] = [
   'Computer Science',
@@ -38,7 +43,7 @@ const academicYears: AcademicYear[] = [
 
 const StudentDashboard: React.FC = () => {
   const navigate = useNavigate();
-  const { students, deleteStudent, searchStudents, sortStudents, clearAllStudents } = useStudents();
+  const { students, deleteStudent, searchStudents, sortStudents, clearAllStudents, calculateStudentCGPA } = useStudents();
   
   const [searchFilters, setSearchFilters] = useState<SearchFilters>({
     query: '',
@@ -52,6 +57,8 @@ const StudentDashboard: React.FC = () => {
   const [itemsPerPage] = useState(12);
   const [editingStudent, setEditingStudent] = useState<Student | null>(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showSubjectManagement, setShowSubjectManagement] = useState(false);
+  const [viewingAcademicProfile, setViewingAcademicProfile] = useState<Student | null>(null);
 
   // Filter and sort students
   const filteredStudents = useMemo(() => {
@@ -78,6 +85,15 @@ const StudentDashboard: React.FC = () => {
       return acc;
     }, {} as Record<string, number>);
 
+    const totalEnrollments = students.reduce((sum, student) => {
+      return sum + (student.subjects?.length || 0);
+    }, 0);
+
+    const averageCGPA = students.reduce((sum, student) => {
+      const cgpa = calculateStudentCGPA(student.id);
+      return sum + cgpa;
+    }, 0) / (students.length || 1);
+
     return {
       total: students.length,
       departments: Object.keys(departmentCounts).length,
@@ -85,8 +101,10 @@ const StudentDashboard: React.FC = () => {
       recentRegistrations: students.filter(s => 
         new Date(s.createdAt).getTime() > Date.now() - 7 * 24 * 60 * 60 * 1000
       ).length,
+      totalEnrollments,
+      averageCGPA: formatCGPA(averageCGPA),
     };
-  }, [students]);
+  }, [students, calculateStudentCGPA]);
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFilters(prev => ({ ...prev, query: e.target.value }));
@@ -120,6 +138,10 @@ const StudentDashboard: React.FC = () => {
         setCurrentPage(currentPage - 1);
       }
     }
+  };
+
+  const handleViewAcademicProfile = (student: Student) => {
+    setViewingAcademicProfile(student);
   };
 
   const handleClearAll = () => {
@@ -177,6 +199,13 @@ const StudentDashboard: React.FC = () => {
                 Home
               </button>
               <button
+                onClick={() => setShowSubjectManagement(true)}
+                className="btn-secondary flex items-center justify-center"
+              >
+                <BookOpen className="h-5 w-5 mr-2" />
+                Manage Subjects
+              </button>
+              <button
                 onClick={() => navigate('/register')}
                 className="btn-primary flex items-center justify-center"
               >
@@ -190,7 +219,7 @@ const StudentDashboard: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Statistics */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-6 mb-8">
           <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
             <div className="flex items-center">
               <Users className="h-8 w-8 text-primary-600" />
@@ -207,6 +236,26 @@ const StudentDashboard: React.FC = () => {
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Departments</p>
                 <p className="text-2xl font-bold text-gray-900">{stats.departments}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="flex items-center">
+              <BookOpen className="h-8 w-8 text-emerald-600" />
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Total Enrollments</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.totalEnrollments}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+            <div className="flex items-center">
+              <Award className="h-8 w-8 text-orange-600" />
+              <div className="ml-4">
+                <p className="text-sm font-medium text-gray-600">Average CGPA</p>
+                <p className="text-2xl font-bold text-gray-900">{stats.averageCGPA}</p>
               </div>
             </div>
           </div>
@@ -366,6 +415,7 @@ const StudentDashboard: React.FC = () => {
                 student={student}
                 onEdit={handleEditStudent}
                 onDelete={handleDeleteStudent}
+                onViewAcademic={handleViewAcademicProfile}
               />
             ))}
           </div>
@@ -455,6 +505,23 @@ const StudentDashboard: React.FC = () => {
           student={editingStudent}
           isOpen={!!editingStudent}
           onClose={() => setEditingStudent(null)}
+        />
+      )}
+
+      {/* Subject Management Modal */}
+      {showSubjectManagement && (
+        <SubjectManagement
+          isOpen={showSubjectManagement}
+          onClose={() => setShowSubjectManagement(false)}
+        />
+      )}
+
+      {/* Academic Profile Modal */}
+      {viewingAcademicProfile && (
+        <StudentAcademicProfile
+          student={viewingAcademicProfile}
+          isOpen={!!viewingAcademicProfile}
+          onClose={() => setViewingAcademicProfile(null)}
         />
       )}
 

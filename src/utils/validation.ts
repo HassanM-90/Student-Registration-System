@@ -73,6 +73,35 @@ export const studentValidationSchema = yup.object({
     }),
 });
 
+export const subjectValidationSchema = yup.object({
+  name: yup
+    .string()
+    .required('Subject name is required')
+    .min(2, 'Subject name must be at least 2 characters')
+    .max(100, 'Subject name must not exceed 100 characters'),
+  
+  code: yup
+    .string()
+    .required('Subject code is required')
+    .min(3, 'Subject code must be at least 3 characters')
+    .max(10, 'Subject code must not exceed 10 characters')
+    .matches(/^[A-Z0-9]+$/, 'Subject code can only contain uppercase letters and numbers'),
+  
+  creditHours: yup
+    .number()
+    .required('Credit hours are required')
+    .min(1, 'Credit hours must be at least 1')
+    .max(6, 'Credit hours must not exceed 6')
+    .typeError('Credit hours must be a number'),
+  
+  instructorName: yup
+    .string()
+    .required('Instructor name is required')
+    .min(2, 'Instructor name must be at least 2 characters')
+    .max(50, 'Instructor name must not exceed 50 characters')
+    .matches(/^[a-zA-Z\s]+$/, 'Instructor name can only contain letters and spaces'),
+});
+
 export const formatPhoneNumber = (value: string): string => {
   const phoneNumber = value.replace(/\D/g, '');
   
